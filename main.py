@@ -16,21 +16,22 @@ import pickle
 def main():
     vid = mmcv.VideoReader('SwordFight.mp4')
     cfg = mmcv.Config.fromfile('mmpose/configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/mspn50_coco_256x192.py')
+
+    # 2D Models
     pretrained_model = 'model/mspn50_coco_256x192-8fbfb5d0_20201123.pth'
     det_config = 'mmpose/demo/mmdetection_cfg/faster_rcnn_r50_fpn_coco.py'
     det_checkpoint = 'model/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth'
+
+    # 3D Models
     pose_lift_config = mmcv.Config.fromfile('mmpose/configs/body/3d_kpt_sview_rgb_vid/video_pose_lift/h36m/videopose3d_h36m_243frames_fullconv_supervised_cpn_ft.py')
     pose_lift_checkpoint = 'model/videopose_h36m_243frames_fullconv_supervised_cpn_ft-88f5abbb_20210527.pth'
 
-    # cfg.data_cfg.image_size = (256, 256)
     pose_model = init_pose_model(cfg, pretrained_model)
     pose_det_dataset = pose_model.cfg.data['test']['type']
     det_model = init_detector(det_config, det_checkpoint)
 
     dataset_info = DatasetInfo(pose_model.cfg.data['test'].get('dataset_info', None))
 
-    filter_cfg = dict(type='GaussianFilter', window_size=3)
-    smoother = Smoother(filter_cfg)
     next_id = 0
     need_extraction = False
     pose_det_results_list = []
@@ -42,13 +43,14 @@ def main():
     with open("pose_det_results_list.pickle", "rb") as f:
         try:
             pose_det_results_list = pickle.load(f)
-            new_extraction = input("pose detection results list detected, do you want a new one? [y/n]")
+            new_extraction = input("pose detection results list detected, do you want a new one? [y/n] ")
             if new_extraction == 'y':
                 need_extraction = True
                 pose_det_results_list = []
             else:
                 print("Continuing onto next stage with loaded data")
 
+        # If no list saved
         except EOFError:
             need_extraction = True
 
@@ -105,7 +107,9 @@ def main():
 
     pose_lift_dataset_info = DatasetInfo(pose_lift_dataset_info)
 
-    num_instances = -1
+    num_instances = 2
+    z = open('Keypoints_3D_Zero.txt', 'w')
+    o = open('Keypoints_3D_One.txt', 'w')
     print('Running 2D-to-3D pose lifting inference...')
     for i, pose_det_results in enumerate(
             mmcv.track_iter_progress(pose_det_results_list)):
@@ -126,7 +130,7 @@ def main():
             with_track_id=True,
             image_size=vid.resolution)
 
-        # Pose processing
+        # Pose processing (and keypoint extraction)
         pose_lift_results_vis = []
         for idx, res in enumerate(pose_lift_results):
             keypoints_3d = res['keypoints_3d']
@@ -145,6 +149,7 @@ def main():
             res['bbox'] = det_res['bbox']
             res['track_id'] = instance_id
             pose_lift_results_vis.append(res)
+            extract_keypoints(keypoints_3d, instance_id, z, o)
 
         # Visualization
         if num_instances < 0:
@@ -164,7 +169,14 @@ def main():
         writer.write(img_vis)
 
     writer.release()
-    # TODO: Add Pickle for 3D poses, add video file to show all poses.
+
+
+def extract_keypoints(keypoints, id, fileZ, fileO):
+    file = fileZ if id == 0 else fileO
+
+    file.write(keypoints.__str__())
+    file.write('\n')
+    file.write('\n')
 
 
 if __name__ == '__main__':
