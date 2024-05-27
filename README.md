@@ -7,6 +7,8 @@ To learn more about AI through practical means, and to teach people about AI. I 
 # Method
 I using a similar method to [this paper](https://arxiv.org/pdf/2105.12196). 
 
-I use LSTMs to train 3 different actions (animations created from pose estimation), and then plug in these LSTMs into a deep convolutional neural network, and train them with Proximal Policy Optimization. 
+I use LSTMs to train 3 different actions (Imitation Learning). I use animations created via pose estimation (because I didn't know how to do motion capture).    
+
+I then plug in these LSTMs into a deep convolutional neural network, and train them with Proximal Policy Optimization. 
 
 
