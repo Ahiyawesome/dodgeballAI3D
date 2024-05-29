@@ -7,8 +7,17 @@ To learn more about AI through practical means, and to teach people about AI. I 
 # Method
 I using a similar method to [this paper](https://arxiv.org/pdf/2105.12196). 
 
-I use LSTMs to train 3 different actions (Imitation Learning). I use animations created via pose estimation (because I didn't know how to do motion capture).    
+I use LSTMs to train 3 different actions (Imitation Learning). I use animations created via pose estimation (because I didn't know how to do motion capture). The inputs of the LSTMs are the x, y, and z values of the positions, rotations, velocities, and angular velocities of each of the 17 joints of the player. At first, I used the AI player for the inputs, but later I realized that the inputs of the target animation player are better becuase they are always the same for every epoch. The outputs are used to determine how much each joint should rotate (x, y, and z values for each joint). 
+![](https://github.com/Ahiyawesome/dodgeballAI3D/blob/main/t1.gif)
+![](https://github.com/Ahiyawesome/dodgeballAI3D/blob/main/lstm.gif).
 
-I then plug in these LSTMs into a deep convolutional neural network, and train them with Proximal Policy Optimization. 
+These LSTMs are then used in a convolutional neural network to be trained in a Deep Learning process (this is the part that I'm currently working on). Since there are no targets, we create the gradient with a system of rewards, which is known as a policy gradient. The one that I will most likely use is the Proximal Policy Optimization.
 
+# Resources Used
+[Paper ](https://arxiv.org/pdf/2105.12196) By Siqi Liu, Guy Lever, Zhe Wang, Josh Merel1, S. M. Ali Eslami, Daniel Hennes, Wojciech M.Czarnecki, Yuval Tassa, Shayegan Omidshafiei, Abbas Abdolmaleki, Noah Y. Siegel, LeonardHasenclever, Luke Marris, Saran Tunyasuvunakool, H. Francis Song, Markus Wulfmeier, Paul Muller, Tuomas Haarnoja, Brendan D. Tracey, Karl Tuyls, Thore Graepel1 and Nicolas Heess.
+[Video by b2studios](https://www.youtube.com/watch?v=9JW41BNH9CM)
+[Article by Aiden Gomez](https://medium.com/@aidangomez/let-s-do-this-f9b699de31d9)
+[Paper ]() by John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+
+ 
 
