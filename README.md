@@ -15,8 +15,11 @@ These LSTMs are then used in a convolutional neural network to be trained in a D
 
 # Resources Used
 [Paper ](https://arxiv.org/pdf/2105.12196) By Siqi Liu, Guy Lever, Zhe Wang, Josh Merel1, S. M. Ali Eslami, Daniel Hennes, Wojciech M.Czarnecki, Yuval Tassa, Shayegan Omidshafiei, Abbas Abdolmaleki, Noah Y. Siegel, LeonardHasenclever, Luke Marris, Saran Tunyasuvunakool, H. Francis Song, Markus Wulfmeier, Paul Muller, Tuomas Haarnoja, Brendan D. Tracey, Karl Tuyls, Thore Graepel1 and Nicolas Heess.
+
 [Video by b2studios](https://www.youtube.com/watch?v=9JW41BNH9CM)
+
 [Article by Aiden Gomez](https://medium.com/@aidangomez/let-s-do-this-f9b699de31d9)
+
 [Paper ]() by John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
 
  
