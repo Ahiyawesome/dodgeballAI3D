@@ -14,13 +14,14 @@ I use LSTMs to train 3 different actions (Imitation Learning). I use animations 
 These LSTMs are then used in a convolutional neural network to be trained in a Deep Learning process (this is the part that I'm currently working on). Since there are no targets, we create the gradient with a system of rewards, which is known as a policy gradient. The one that I will most likely use is the Proximal Policy Optimization.
 
 # Resources Used
-[Paper ](https://arxiv.org/pdf/2105.12196) By Siqi Liu, Guy Lever, Zhe Wang, Josh Merel1, S. M. Ali Eslami, Daniel Hennes, Wojciech M.Czarnecki, Yuval Tassa, Shayegan Omidshafiei, Abbas Abdolmaleki, Noah Y. Siegel, LeonardHasenclever, Luke Marris, Saran Tunyasuvunakool, H. Francis Song, Markus Wulfmeier, Paul Muller, Tuomas Haarnoja, Brendan D. Tracey, Karl Tuyls, Thore Graepel1 and Nicolas Heess.
+[Paper](https://arxiv.org/pdf/2105.12196) by Siqi Liu, Guy Lever, Zhe Wang, Josh Merel1, S. M. Ali Eslami, Daniel Hennes, Wojciech M.Czarnecki, Yuval Tassa, Shayegan Omidshafiei, Abbas Abdolmaleki, Noah Y. Siegel, LeonardHasenclever, Luke Marris, Saran Tunyasuvunakool, H. Francis Song, Markus Wulfmeier, Paul Muller, Tuomas Haarnoja, Brendan D. Tracey, Karl Tuyls, Thore Graepel1 and Nicolas Heess.
 
 [Video ](https://www.youtube.com/watch?v=9JW41BNH9CM) by b2studios
 
 [Article ](https://medium.com/@aidangomez/let-s-do-this-f9b699de31d9) by Aiden Gomez
 
-[Paper ](https://arxiv.org/abs/1707.06347) by John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+[Paper](https://arxiv.org/abs/1707.06347) by John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+[Paper]([https://arxiv.org/abs/1707.06347](https://openreview.net/forum?id=BJl6TjRcY7)) by Josh Merel, Leonard Hasenclever, Alexandre Galashov, Arun Ahuja, Vu Pham, Greg Wayne, Yee Whye Teh, and Nicolas Heess
 
  
 
