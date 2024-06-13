@@ -20,7 +20,7 @@ These LSTMs are then used in a convolutional neural network to be trained in a D
 
 [Article ](https://medium.com/@aidangomez/let-s-do-this-f9b699de31d9) by Aiden Gomez
 
-[Paper ]() by John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+[Paper ](https://arxiv.org/abs/1707.06347) by John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
 
  
 
